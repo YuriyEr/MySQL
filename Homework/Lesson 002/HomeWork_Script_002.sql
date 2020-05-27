@@ -6,9 +6,55 @@ set GLOBAL time_zone = '-3:00';
 DROP TABLE IF EXISTS catalogs; 
 -- создаем таблицу с наименованиями интернет магазинов, где id первичный ключ
 CREATE TABLE catalogs (
-id INT UNSIGNED NOT NULL PRIMARY KEY,
-name VARCHAR(255) COMMENT 'Название раздела'
+id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(255) COMMENT 'Название раздела',
+UNIQUE unique_name(name(10)) -- запрет на добавление уже вставленных ранее значений (на 10 символов)
 ) COMMENT = 'Название интернет магазина';
+
+DROP TABLE IF EXISTS cat; 
+CREATE TABLE cat (
+id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(255) COMMENT 'Название каталога',
+UNIQUE unique_name(name(10)) -- запрет на добавление уже вставленных ранее значений (на 10 символов)
+) COMMENT = 'Название каталога магазина';
+
+-- вставка данных построчно
+-- INSERT INTO catalogs VALUES(NULL, 'Процессор');
+-- или так
+-- INSERT INTO catalogs(id,name) VALUES(NULL, 'Память');
+-- или так
+-- INSERT INTO catalogs(id,name) VALUES(DEFAULT, 'Видеокарта');
+-- вставка данных многострочно 
+INSERT IGNORE INTO catalogs VALUES
+(NULL, 'Процессор'),
+(NULL, 'Память'),
+(NULL, 'Видеокарта ');
+
+-- удаление данных 
+-- DELETE FROM catalogs ; -- удаление всех записей
+-- удаление данных 
+-- DELETE FROM catalogs LIMIT 1; -- удаление первой записей
+-- или по условию
+DELETE FROM catalogs WHERE id > 1;
+
+-- обновление данных
+UPDATE
+catalogs 
+SET
+name  = 'процессоры интел'
+WHERE 
+name  = 'Процессор';
+
+-- копирование таблиц
+INSERT INTO
+cat
+SELECT * FROM
+catalogs ;
+SELECT * FROM cat;
+
+-- извлечение данных (или вывод на экран если не указан путь для результата)
+SELECT * FROM catalogs; -- все столбцы
+SELECT name, id FROM catalogs; -- конкретные в заданной последовательности
 
 DROP TABLE IF EXISTS users; 
 CREATE TABLE users (
