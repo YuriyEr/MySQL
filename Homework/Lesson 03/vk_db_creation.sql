@@ -119,27 +119,48 @@ CREATE TABLE `friend_requests` (
   `requested_at` datetime DEFAULT current_timestamp(),
   `confirmed_at` datetime DEFAULT NULL,
   PRIMARY KEY (`initiator_user_id`,`target_user_id`),
-  UNIQUE KEY `initiator_user_id` (`initiator_user_id`),
   KEY `initiator_user_id_2` (`initiator_user_id`),
   KEY `target_user_id` (`target_user_id`),
   FOREIGN KEY (`initiator_user_id`) REFERENCES `users` (`id`),
   FOREIGN KEY (`target_user_id`) REFERENCES `users` (`id`)
 ) ;
 
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('101', '101', 'requested', '2016-10-11 07:39:49', '1984-04-16 16:52:05', '1998-10-21 16:42:09');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('102', '102', 'approved', '1975-03-08 01:53:29', '2004-09-19 17:50:14', '1979-07-17 15:24:35');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('103', '103', 'requested', '2002-09-03 01:09:33', '2004-08-22 03:22:18', '1977-02-11 18:19:40');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('106', '108', 'unfriended', '2006-01-08 14:38:11', '1993-10-27 08:11:40', '2002-07-22 10:38:45');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('107', '111', 'declined', '2014-06-19 14:50:05', '2007-08-02 23:41:33', '1994-01-18 19:49:26');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('108', '112', 'unfriended', '2007-11-07 03:02:21', '2001-06-19 00:07:44', '1976-07-31 19:40:52');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('111', '115', 'requested', '2002-04-29 23:51:48', '1970-07-09 17:46:55', '2020-04-14 12:26:22');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('112', '117', 'requested', '1990-09-07 08:17:45', '2016-01-18 08:31:41', '1987-02-24 02:40:58');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('113', '118', 'declined', '1995-11-20 06:27:21', '1982-12-13 18:24:58', '1973-11-14 12:27:08');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('114', '121', 'unfriended', '1979-06-27 19:13:57', '1988-01-24 07:09:44', '2000-09-17 02:13:48');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('115', '122', 'approved', '1987-05-24 10:07:28', '2012-01-01 04:55:27', '2008-11-04 14:42:45');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('117', '124', 'unfriended', '1993-03-06 13:20:42', '1989-09-13 16:27:25', '1994-10-20 13:47:39');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `created_at`, `requested_at`, `confirmed_at`) VALUES ('118', '126', 'requested', '2009-05-01 10:05:53', '1983-12-13 12:10:07', '1990-08-03 21:11:24');
-
+INSERT INTO `friend_requests` VALUES ('101','126','unfriended','1986-06-01 02:05:14','2011-06-01 22:30:16','1987-07-06 12:51:50'),
+('106','197','unfriended','1981-11-11 17:30:25','2013-04-20 15:25:33','1972-08-21 08:43:32'),
+('108','188','requested','1977-06-17 16:11:28','1979-06-10 04:45:58','1979-09-20 00:44:12'),
+('111','147','declined','2002-02-20 09:59:25','2008-04-25 22:22:40','1979-04-17 02:17:40'),
+('112','108','approved','1978-05-21 05:05:52','2010-08-08 08:26:03','1973-12-26 22:29:34'),
+('113','114','unfriended','1977-07-28 18:14:26','1984-04-07 07:26:31','1978-09-26 07:12:41'),
+('114','177','unfriended','1990-05-31 08:48:36','1977-03-09 01:24:21','1982-10-10 15:08:24'),
+('115','169','approved','1990-11-23 07:24:09','2019-04-21 17:41:39','1985-07-17 03:56:39'),
+('117','103','declined','2009-06-07 22:40:50','1971-11-03 03:45:06','2009-06-15 00:13:28'),
+('118','183','declined','1974-06-15 07:09:04','1994-10-20 13:55:20','1987-04-01 06:27:15'),
+('121','106','approved','2011-01-23 07:37:55','2007-12-18 07:01:19','2016-05-11 15:12:15'),
+('124','180','approved','2017-10-01 06:34:18','1984-06-09 07:30:21','2017-04-24 22:28:48'),
+('126','115','declined','2018-08-31 21:31:14','1987-06-18 23:11:48','1986-11-16 21:58:01'),
+('132','107','declined','2010-08-16 14:26:51','2016-12-20 12:45:06','1993-01-23 23:08:11'),
+('134','199','approved','1979-04-14 01:11:31','1992-07-18 14:50:37','1975-11-20 08:21:29'),
+('135','194','declined','2010-10-30 10:45:55','1985-09-15 09:42:20','1995-04-25 10:52:57'),
+('147','166','declined','1970-09-06 21:46:45','1987-09-06 21:41:07','1977-09-19 13:30:41'),
+('148','174','declined','1979-10-06 20:18:59','1988-09-16 02:21:56','2004-07-30 10:16:39'),
+('153','123','requested','1986-02-28 19:48:57','2005-08-08 16:16:47','1996-07-24 01:32:08'),
+('157','165','declined','2007-05-22 09:17:36','1983-09-26 00:27:13','1997-02-23 19:16:32'),
+('160','193','approved','2016-07-20 14:32:44','1974-02-07 23:44:30','2018-08-03 16:53:49'),
+('163','157','unfriended','1989-05-02 18:08:50','1975-03-03 00:19:06','1993-12-14 23:07:16'),
+('164','146','declined','1983-06-14 20:05:17','1972-03-27 06:38:49','1980-07-18 06:48:34'),
+('167','191','declined','1995-09-27 02:48:09','2015-07-09 08:28:24','1972-02-23 12:49:53'),
+('169','124','declined','2003-06-05 11:20:40','2008-03-05 19:40:24','2008-07-02 23:23:52'),
+('174','198','requested','2019-09-08 03:51:06','2000-10-06 15:00:27','1982-09-04 11:27:03'),
+('176','178','unfriended','1986-12-05 05:20:42','1973-09-19 16:24:17','1998-08-01 07:59:33'),
+('180','102','unfriended','1987-08-22 10:50:32','1994-05-15 05:18:50','2001-05-28 15:34:17'),
+('181','200','requested','1979-07-29 06:06:07','2019-01-09 21:50:08','2014-01-20 05:17:23'),
+('183','135','unfriended','1990-06-10 15:10:16','2007-03-07 17:34:39','1978-08-05 16:02:00'),
+('186','181','approved','1970-11-20 20:51:16','2006-03-15 07:44:25','1984-07-04 15:46:12'),
+('194','187','requested','1986-12-07 23:03:10','1981-04-18 02:01:40','2018-10-13 16:07:04'),
+('197','132','approved','2020-04-14 06:04:46','1974-12-03 08:03:49','2002-11-10 20:15:33'),
+('198','121','approved','2003-08-04 10:16:19','2011-11-29 20:25:15','1988-11-22 09:20:26'),
+('199','150','unfriended','1981-12-27 02:39:05','2013-12-26 20:42:56','1970-05-05 18:35:01'),
+('200','153','requested','1974-07-23 22:47:14','1997-11-22 05:02:58','1995-11-11 11:25:40'); 
 
 DROP TABLE IF EXISTS `media_types`;
 CREATE TABLE `media_types` (
@@ -189,21 +210,21 @@ CREATE TABLE `media` (
   FOREIGN KEY (`media_type_id`) REFERENCES `media_types` (`id`)
 ) ;
 
-INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('1', '1', '101', 'Dolores autem dolor blanditiis. Nisi ut cupiditate molestiae voluptas. Harum necessitatibus neque hic quaerat. Aut optio et aliquam est tenetur qui. In quibusdam nihil dolore animi et.', 'eos', 325, NULL, '2018-08-08 00:35:53', '1994-12-17 14:55:53');
-INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('2', '2', '102', 'Aut ducimus voluptate vel deserunt autem voluptates. Qui similique ipsam ut maxime vitae aut. Sed et est ratione. Aperiam rerum dolorem minus molestiae in.', 'unde', 926066, NULL, '2000-06-17 16:27:40', '2015-11-08 12:06:08');
-INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('3', '3', '103', 'Voluptatem consequatur sed suscipit sequi molestiae. Hic esse id voluptas quas. Quaerat accusamus odio facere in quaerat quas.', 'nesciunt', 278798, NULL, '2005-04-30 02:12:32', '1992-03-10 14:23:57');
-INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('4', '4', '106', 'Enim adipisci corrupti unde molestiae placeat est vel quis. Quasi sit reprehenderit quae illo pariatur molestias magni repellat. Nemo rerum atque soluta nulla nostrum molestiae.', 'debitis', 34746314, NULL, '1998-12-05 14:19:14', '1996-08-26 05:01:21');
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('1', '1', '107', 'Dolores autem dolor blanditiis. Nisi ut cupiditate molestiae voluptas. Harum necessitatibus neque hic quaerat. Aut optio et aliquam est tenetur qui. In quibusdam nihil dolore animi et.', 'eos', 325, NULL, '2018-08-08 00:35:53', '1994-12-17 14:55:53');
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('2', '1', '111', 'Aut ducimus voluptate vel deserunt autem voluptates. Qui similique ipsam ut maxime vitae aut. Sed et est ratione. Aperiam rerum dolorem minus molestiae in.', 'unde', 926066, NULL, '2000-06-17 16:27:40', '2015-11-08 12:06:08');
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('3', '2', '114', 'Voluptatem consequatur sed suscipit sequi molestiae. Hic esse id voluptas quas. Quaerat accusamus odio facere in quaerat quas.', 'nesciunt', 278798, NULL, '2005-04-30 02:12:32', '1992-03-10 14:23:57');
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('4', '3', '106', 'Enim adipisci corrupti unde molestiae placeat est vel quis. Quasi sit reprehenderit quae illo pariatur molestias magni repellat. Nemo rerum atque soluta nulla nostrum molestiae.', 'debitis', 34746314, NULL, '1998-12-05 14:19:14', '1996-08-26 05:01:21');
 INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('5', '5', '107', 'Et officiis dolorem odit atque quia delectus modi. Maxime consectetur tempora asperiores ea sunt repellendus. Quisquam dolorum non saepe recusandae qui. Ut doloremque odio cum in molestiae quaerat.', 'numquam', 0, NULL, '2000-01-18 04:10:19', '1988-03-19 17:07:44');
-INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('6', '6', '108', 'Consequatur nesciunt quia sit ad libero et nihil. Ratione est accusantium aliquam ducimus ea quisquam. Qui et accusantium aut est.', 'sunt', 828, NULL, '2016-09-26 20:51:33', '2004-02-27 20:09:38');
-INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('7', '7', '111', 'Nisi sed et accusantium non. Aut ea dignissimos iusto praesentium fugiat autem. Voluptatibus nobis aperiam est vero.', 'unde', 492492823, NULL, '2008-12-16 10:27:13', '2000-01-02 18:33:34');
-INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('8', '8', '112', 'Illo animi aliquam similique numquam tenetur dolore. Aspernatur numquam non ipsa. Voluptatum magnam ex vitae velit ea.\nHarum iure ratione et maiores id. Adipisci dolorem veniam nemo reiciendis.', 'excepturi', 0, NULL, '1975-01-24 09:29:28', '2019-09-16 21:43:13');
-INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('9', '9', '113', 'Temporibus a quasi nobis. Iusto iure exercitationem libero nostrum ab dicta voluptate. Corrupti possimus beatae molestias sint.', 'magni', 248489312, NULL, '1995-10-01 09:44:34', '2008-10-22 09:37:37');
-INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('10', '10', '114', 'Commodi occaecati molestiae fugit excepturi consequatur. Quos repellendus error sint et et. Voluptatem quis ea et voluptates porro.', 'eos', 49910055, NULL, '2003-07-06 03:30:42', '2001-02-28 21:19:19');
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('6', '4', '102', 'Consequatur nesciunt quia sit ad libero et nihil. Ratione est accusantium aliquam ducimus ea quisquam. Qui et accusantium aut est.', 'sunt', 828, NULL, '2016-09-26 20:51:33', '2004-02-27 20:09:38');
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('7', '5', '111', 'Nisi sed et accusantium non. Aut ea dignissimos iusto praesentium fugiat autem. Voluptatibus nobis aperiam est vero.', 'unde', 492492823, NULL, '2008-12-16 10:27:13', '2000-01-02 18:33:34');
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('8', '6', '113', 'Illo animi aliquam similique numquam tenetur dolore. Aspernatur numquam non ipsa. Voluptatum magnam ex vitae velit ea.\nHarum iure ratione et maiores id. Adipisci dolorem veniam nemo reiciendis.', 'excepturi', 0, NULL, '1975-01-24 09:29:28', '2019-09-16 21:43:13');
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('9', '6', '113', 'Temporibus a quasi nobis. Iusto iure exercitationem libero nostrum ab dicta voluptate. Corrupti possimus beatae molestias sint.', 'magni', 248489312, NULL, '1995-10-01 09:44:34', '2008-10-22 09:37:37');
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('10', '1', '102', 'Commodi occaecati molestiae fugit excepturi consequatur. Quos repellendus error sint et et. Voluptatem quis ea et voluptates porro.', 'eos', 49910055, NULL, '2003-07-06 03:30:42', '2001-02-28 21:19:19');
 
 DROP TABLE IF EXISTS `photo_albums`;
 CREATE TABLE `photo_albums` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `user_id` bigint(20) unsigned DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `update_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -213,8 +234,8 @@ CREATE TABLE `photo_albums` (
   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 );
 
-INSERT INTO `photo_albums` (`id`, `name`, `user_id`, `created_at`, `update_at`) VALUES ('1', 'assumenda', '101', '2015-07-15 18:59:14', '1996-08-06 11:43:05');
-INSERT INTO `photo_albums` (`id`, `name`, `user_id`, `created_at`, `update_at`) VALUES ('2', 'molestiae', '102', '2009-11-15 05:02:41', '1980-08-09 18:55:18');
+INSERT INTO `photo_albums` (`id`, `name`, `user_id`, `created_at`, `update_at`) VALUES ('1', 'assumenda', '102', '2015-07-15 18:59:14', '1996-08-06 11:43:05');
+INSERT INTO `photo_albums` (`id`, `name`, `user_id`, `created_at`, `update_at`) VALUES ('2', 'molestiae', '101', '2009-11-15 05:02:41', '1980-08-09 18:55:18');
 INSERT INTO `photo_albums` (`id`, `name`, `user_id`, `created_at`, `update_at`) VALUES ('3', 'et', '103', '1985-07-12 23:47:48', '1977-06-23 12:45:30');
 INSERT INTO `photo_albums` (`id`, `name`, `user_id`, `created_at`, `update_at`) VALUES ('4', 'omnis', '106', '1998-04-19 02:48:00', '2013-02-16 20:35:39');
 
@@ -234,105 +255,25 @@ CREATE TABLE `photos` (
 );
 
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('1', '1', '1', '1981-09-05 12:48:00', '1971-01-02 05:57:15');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('2', '2', '2', '2005-11-18 13:27:23', '1996-12-11 14:33:28');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('3', '3', '3', '1976-06-15 15:30:17', '2003-11-17 05:18:01');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('2', '4', '2', '2005-11-18 13:27:23', '1996-12-11 14:33:28');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('3', '4', '3', '1976-06-15 15:30:17', '2003-11-17 05:18:01');
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('4', '4', '4', '1978-09-17 15:40:30', '1995-03-17 00:59:13');
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('5', '1', '5', '1972-01-03 13:06:01', '2004-03-16 21:07:26');
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('6', '2', '6', '1988-02-29 03:00:55', '2003-06-04 07:53:22');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('7', '3', '7', '2013-05-07 18:08:46', '1998-11-17 05:16:33');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('8', '4', '8', '1984-05-10 14:47:06', '1983-12-03 05:29:55');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('7', '2', '7', '2013-05-07 18:08:46', '1998-11-17 05:16:33');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('8', '3', '8', '1984-05-10 14:47:06', '1983-12-03 05:29:55');
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('9', '1', '9', '1985-12-03 09:57:14', '1984-05-21 19:36:42');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('10', '2', '10', '1994-12-05 18:49:11', '1976-11-23 13:35:10');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('11', '3', '1', '1984-05-14 19:38:15', '1986-09-06 05:00:15');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('10', '1', '10', '1994-12-05 18:49:11', '1976-11-23 13:35:10');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('11', '1', '1', '1984-05-14 19:38:15', '1986-09-06 05:00:15');
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('12', '4', '2', '2015-05-31 00:14:59', '1971-10-18 05:51:01');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('13', '1', '3', '1991-07-28 11:43:31', '1971-08-04 04:03:00');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('13', '4', '3', '1991-07-28 11:43:31', '1971-08-04 04:03:00');
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('14', '2', '4', '1999-03-05 10:34:03', '1980-11-12 10:18:59');
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('15', '3', '5', '1996-01-19 19:08:54', '1973-10-15 04:35:17');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('16', '4', '6', '1999-05-27 16:30:48', '2006-07-09 08:10:44');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('16', '2', '6', '1999-05-27 16:30:48', '2006-07-09 08:10:44');
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('17', '1', '7', '1974-03-02 01:52:20', '1995-04-21 15:57:41');
 INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('18', '2', '8', '2018-07-29 03:34:16', '1995-04-18 22:15:03');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('19', '3', '9', '1972-07-14 04:41:28', '1979-08-17 02:43:03');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('20', '4', '10', '2001-08-26 17:15:41', '1982-11-14 17:06:20');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('21', '1', '1', '1981-10-09 07:02:07', '1985-07-17 13:58:48');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('22', '2', '2', '1997-06-16 20:16:16', '2002-11-16 23:14:18');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('23', '3', '3', '2006-11-09 11:43:36', '1990-07-30 23:22:12');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('24', '4', '4', '2014-03-20 20:46:42', '2017-03-29 05:16:56');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('25', '1', '5', '1975-04-18 23:34:27', '1999-01-25 06:56:47');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('26', '2', '6', '1974-03-14 12:27:56', '1979-10-16 17:46:31');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('27', '3', '7', '2011-10-09 20:08:27', '2001-08-30 00:39:11');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('28', '4', '8', '1980-07-29 14:26:42', '2004-10-09 11:57:27');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('29', '1', '9', '2002-05-15 17:54:55', '1972-01-07 01:29:12');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('30', '2', '10', '1996-06-07 09:33:24', '2019-11-18 14:06:04');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('31', '3', '1', '2000-01-01 01:55:16', '1979-09-01 03:19:54');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('32', '4', '2', '2017-11-29 03:14:19', '2016-03-27 08:10:24');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('33', '1', '3', '2016-01-24 05:55:37', '1992-10-16 10:31:48');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('34', '2', '4', '1997-06-27 14:19:31', '1994-07-29 09:21:24');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('35', '3', '5', '1992-11-07 12:36:16', '1986-04-07 22:03:03');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('36', '4', '6', '2018-12-24 14:21:32', '2014-03-29 06:17:43');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('37', '1', '7', '1981-09-20 07:49:37', '1988-02-05 18:09:23');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('38', '2', '8', '1986-12-19 06:46:11', '1973-05-23 09:14:58');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('39', '3', '9', '1978-06-17 18:57:06', '1983-05-28 18:53:14');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('40', '4', '10', '2015-09-07 15:16:29', '2013-12-22 21:23:11');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('41', '1', '1', '1976-01-15 05:45:42', '1999-09-10 18:28:56');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('42', '2', '2', '1997-02-08 02:14:19', '2003-02-07 10:24:56');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('43', '3', '3', '1977-12-22 19:23:29', '2007-06-21 02:15:04');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('44', '4', '4', '2005-10-25 08:19:14', '2013-02-15 12:11:38');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('45', '1', '5', '2000-04-01 21:33:57', '1987-09-24 23:11:07');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('46', '2', '6', '2000-10-23 09:39:05', '1982-02-26 08:52:39');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('47', '3', '7', '1990-08-12 15:41:20', '1983-03-15 18:14:36');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('48', '4', '8', '2000-12-08 09:15:32', '1979-10-30 04:29:05');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('49', '1', '9', '1989-01-25 16:02:57', '2001-01-20 22:44:03');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('50', '2', '10', '2013-11-06 09:47:11', '1987-02-20 18:23:37');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('51', '3', '1', '1985-06-23 17:23:54', '1993-03-25 22:37:14');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('52', '4', '2', '2003-09-11 09:03:10', '1980-11-28 23:05:38');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('53', '1', '3', '1991-03-20 06:48:33', '1983-05-10 14:30:39');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('54', '2', '4', '2001-03-21 15:02:13', '1971-05-23 15:02:11');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('55', '3', '5', '1990-05-08 07:49:38', '1972-07-28 12:20:06');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('56', '4', '6', '2015-05-13 15:44:34', '2002-02-11 13:49:04');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('57', '1', '7', '1989-09-03 10:03:28', '2005-12-01 00:00:47');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('58', '2', '8', '1981-12-31 23:08:30', '2018-06-30 08:05:25');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('59', '3', '9', '2009-12-24 11:35:05', '1998-04-17 19:39:50');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('60', '4', '10', '1975-02-26 04:49:23', '1971-06-23 14:52:49');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('61', '1', '1', '1988-09-28 04:26:39', '1990-07-17 22:02:15');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('62', '2', '2', '2014-02-06 06:59:09', '1991-11-26 11:24:08');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('63', '3', '3', '1988-03-26 19:34:14', '1987-09-27 14:04:07');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('64', '4', '4', '1983-08-19 23:17:19', '1979-01-12 15:17:42');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('65', '1', '5', '1983-02-18 17:36:09', '1979-07-17 01:12:01');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('66', '2', '6', '1996-03-12 00:38:11', '1990-01-19 13:23:34');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('67', '3', '7', '1980-12-18 10:05:16', '1998-08-05 16:50:12');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('68', '4', '8', '1971-09-18 12:19:19', '1990-05-21 22:35:25');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('69', '1', '9', '2013-09-05 22:34:09', '1971-10-15 15:58:11');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('70', '2', '10', '1993-10-25 20:26:24', '2018-02-03 01:43:26');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('71', '3', '1', '1983-12-16 04:22:57', '1986-05-30 03:12:50');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('72', '4', '2', '1975-05-07 02:32:29', '1976-04-20 00:44:03');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('73', '1', '3', '2010-09-13 01:58:36', '1998-02-21 07:13:27');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('74', '2', '4', '1996-12-27 08:43:55', '2008-03-14 01:51:01');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('75', '3', '5', '2008-09-05 23:21:10', '1984-12-31 13:40:07');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('76', '4', '6', '1996-07-06 02:04:54', '2009-12-23 05:43:59');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('77', '1', '7', '1987-09-20 13:41:59', '2006-12-19 06:17:03');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('78', '2', '8', '1998-02-26 01:17:46', '1985-09-06 23:58:30');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('79', '3', '9', '1980-02-13 03:20:38', '2008-10-26 12:42:22');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('80', '4', '10', '2008-08-31 04:37:20', '1997-11-08 06:28:27');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('81', '1', '1', '2003-04-11 16:26:04', '1975-07-02 17:46:03');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('82', '2', '2', '1998-03-26 20:37:36', '2018-06-04 10:19:03');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('83', '3', '3', '1998-01-09 03:50:15', '2016-01-13 20:27:28');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('84', '4', '4', '2016-11-05 14:52:50', '1989-10-08 16:38:50');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('85', '1', '5', '1984-02-07 17:16:10', '1975-10-03 22:37:08');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('86', '2', '6', '1987-03-29 18:52:29', '2001-02-14 23:00:21');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('87', '3', '7', '1973-05-20 13:02:13', '2007-09-24 14:48:03');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('88', '4', '8', '2014-11-02 21:06:21', '2011-06-16 13:15:58');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('89', '1', '9', '2012-10-01 15:22:39', '1975-09-28 01:22:05');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('90', '2', '10', '1987-07-13 07:24:44', '1992-03-18 17:10:01');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('91', '3', '1', '1973-12-14 17:15:46', '2014-01-06 10:12:38');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('92', '4', '2', '2007-01-19 13:01:38', '1993-06-01 07:27:48');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('93', '1', '3', '2015-03-30 10:49:30', '2011-05-25 03:13:51');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('94', '2', '4', '1971-03-22 20:51:30', '2017-11-18 05:16:42');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('95', '3', '5', '1994-10-21 15:44:46', '1991-08-17 05:52:51');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('96', '4', '6', '2016-06-17 19:33:40', '1970-07-27 05:08:47');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('97', '1', '7', '1984-06-26 02:36:20', '1979-04-30 03:07:02');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('98', '2', '8', '2000-07-26 10:22:17', '2009-05-22 17:49:57');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('99', '3', '9', '1992-02-24 01:47:22', '2002-06-11 18:03:36');
-INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('100', '4', '10', '1983-09-07 20:01:25', '2016-05-06 00:11:01');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('19', '2', '9', '1972-07-14 04:41:28', '1979-08-17 02:43:03');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`, `created_at`, `update_at`) VALUES ('20', '3', '10', '2001-08-26 17:15:41', '1982-11-14 17:06:20');
 
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
@@ -608,25 +549,25 @@ CREATE TABLE `likes_dislakes_user` (
 );
 
 INSERT INTO `likes_dislakes_user` VALUES ('1','like','101','101','1970-01-11 23:45:20','1992-03-11 19:12:37'),
-('2','like','102','102','1994-11-30 01:15:52','2013-05-04 16:01:16'),
-('3','like','103','103','2016-04-26 23:03:27','1976-10-05 10:03:46'),
+('2','like','102','103','1994-11-30 01:15:52','2013-05-04 16:01:16'),
+('3','like','103','106','2016-04-26 23:03:27','1976-10-05 10:03:46'),
 ('4','dislike','106','106','1973-12-18 09:00:26','2015-10-22 18:30:27'),
-('5','like','107','107','2016-10-20 05:57:32','1988-03-05 17:43:51'),
+('5','like','107','108','2016-10-20 05:57:32','1988-03-05 17:43:51'),
 ('6','dislike','108','108','1976-01-21 11:01:23','1972-08-25 05:07:29'),
-('7','dislike','111','111','2013-06-06 05:38:46','1994-04-18 04:20:22'),
+('7','dislike','111','112','2013-06-06 05:38:46','1994-04-18 04:20:22'),
 ('8','dislike','112','112','2003-10-24 22:56:07','1972-06-18 14:38:18'),
-('9','dislike','113','113','1998-06-23 10:46:52','1977-07-01 17:47:51'),
+('9','dislike','113','112','1998-06-23 10:46:52','1977-07-01 17:47:51'),
 ('10','dislike','114','114','2004-09-12 00:39:39','1983-12-19 22:18:22'),
-('11','dislike','115','115','2002-12-14 23:32:01','1999-12-27 20:27:14'),
+('11','dislike','115','132','2002-12-14 23:32:01','1999-12-27 20:27:14'),
 ('12','like','117','117','1986-12-21 19:08:03','2001-10-29 02:12:59'),
 ('13','dislike','118','118','2002-06-12 20:44:17','1999-02-09 23:34:41'),
-('14','dislike','121','121','2017-06-22 12:06:41','2015-12-25 15:38:48'),
+('14','dislike','121','117','2017-06-22 12:06:41','2015-12-25 15:38:48'),
 ('15','like','122','122','1990-08-04 07:23:31','2012-05-15 02:58:32'),
 ('16','like','123','123','2000-12-09 07:33:31','2017-04-18 19:45:24'),
 ('17','like','124','124','2004-09-21 14:25:48','1997-01-31 10:23:33'),
-('18','dislike','126','126','2017-12-15 16:06:21','1971-06-11 04:09:15'),
+('18','dislike','126','123','2017-12-15 16:06:21','1971-06-11 04:09:15'),
 ('19','dislike','130','130','2012-07-25 22:56:50','1999-11-13 08:31:54'),
-('20','like','132','132','1995-02-26 14:32:14','1977-12-07 01:29:02'); 
+('20','like','132','123','1995-02-26 14:32:14','1977-12-07 01:29:02'); 
 
 DROP TABLE IF EXISTS `likes_post_photo`;
 CREATE TABLE `likes_post_photo` (
@@ -642,42 +583,13 @@ CREATE TABLE `likes_post_photo` (
 );
 
 INSERT INTO `likes_post_photo` VALUES ('1','like','101','1','2015-12-15 22:20:04','1990-08-23 01:32:47'),
-('2','like','102','2','1980-10-09 19:48:47','2013-05-26 04:40:01'),
-('3','dislike','103','3','1992-12-07 07:12:11','1989-12-17 22:38:49'),
+('2','like','102','4','1980-10-09 19:48:47','2013-05-26 04:40:01'),
+('3','dislike','103','1','1992-12-07 07:12:11','1989-12-17 22:38:49'),
 ('4','dislike','106','4','1981-10-09 00:36:21','2007-07-29 21:45:56'),
-('5','like','107','5','1994-08-28 02:51:09','1996-04-30 08:08:48'),
-('6','dislike','108','6','1982-03-30 23:36:50','1975-07-30 09:52:14'),
-('7','dislike','111','7','1997-06-04 18:50:35','1978-01-09 21:07:40'),
-('8','dislike','112','8','1979-02-10 02:07:55','1982-08-26 03:06:06'),
-('9','like','113','9','1999-09-24 05:39:26','1976-10-24 10:54:08'),
-('10','dislike','114','10','2008-11-06 02:00:42','2012-07-08 20:04:44'),
-('11','like','115','11','1974-09-13 07:43:18','1984-07-26 13:13:52'),
-('12','like','117','12','1971-10-13 00:34:03','2006-03-30 12:24:38'),
-('13','like','118','13','1974-07-25 07:37:25','1978-06-29 10:36:24'),
-('14','dislike','121','14','2005-06-25 14:43:28','1979-01-03 23:40:33'),
-('15','dislike','122','15','1993-08-14 13:53:25','1971-08-13 20:06:43'),
-('16','dislike','123','16','2016-04-25 23:46:32','1995-10-19 03:19:05'),
-('17','like','124','17','2013-10-07 15:15:09','1986-07-07 17:51:28'),
-('18','like','126','18','2004-05-20 15:24:42','2017-05-21 10:18:48'),
-('19','dislike','130','19','2008-05-14 17:29:14','1980-08-03 14:56:45'),
-('20','dislike','132','20','1985-05-29 14:44:18','1976-10-20 02:39:45'),
-('21','dislike','133','21','2008-09-22 10:31:34','1989-06-21 01:20:38'),
-('22','dislike','134','22','1981-06-17 00:58:55','2006-07-15 21:30:10'),
-('23','like','135','23','1970-07-19 23:27:33','2014-06-01 02:13:18'),
-('24','like','137','24','1998-08-04 10:19:17','1971-04-15 13:25:09'),
-('25','dislike','143','25','1975-06-23 05:07:37','1985-04-26 21:27:15'),
-('26','dislike','146','26','1986-09-14 09:25:53','1973-12-01 21:04:12'),
-('27','dislike','147','27','1970-08-05 02:58:53','2003-04-22 20:50:04'),
-('28','dislike','148','28','2011-03-15 03:57:57','1974-03-03 11:44:17'),
-('29','like','150','29','2005-10-26 21:05:07','1987-06-21 08:55:33'),
-('30','dislike','153','30','1973-02-18 15:51:39','2005-03-27 02:46:48'),
-('31','dislike','157','31','1980-03-04 22:16:05','1984-01-13 17:20:22'),
-('32','like','158','32','1974-01-07 12:50:11','1971-08-02 18:55:06'),
-('33','dislike','160','33','2004-04-29 00:17:36','1974-06-13 04:46:57'),
-('34','like','163','34','1993-10-05 01:15:27','2014-08-10 16:53:39'),
-('35','dislike','164','35','1982-05-28 17:06:46','1992-10-31 12:37:58'),
-('36','like','165','36','1982-01-29 05:34:16','2008-02-24 04:38:24'),
-('37','like','166','37','2018-01-15 09:29:55','1997-02-11 16:21:16');
+('5','like','107','2','1994-08-28 02:51:09','1996-04-30 08:08:48'),
+('6','dislike','108','1','1982-03-30 23:36:50','1975-07-30 09:52:14'),
+('7','dislike','111','5','1997-06-04 18:50:35','1978-01-09 21:07:40');
+
 
 DROP TABLE IF EXISTS `likes_dislakes_media`;
 CREATE TABLE `likes_dislakes_media` (
@@ -693,16 +605,16 @@ CREATE TABLE `likes_dislakes_media` (
 );
 
 INSERT INTO `likes_dislakes_media` VALUES ('1','like','101','1','1991-05-08 03:17:17','1974-06-06 17:03:14'),
-('2','dislike','102','2','1989-09-01 21:49:47','1996-06-25 08:14:31'),
-('3','like','103','3','1994-11-05 12:58:19','1985-10-05 13:26:20'),
-('4','dislike','106','4','1972-11-15 01:08:52','1979-02-02 08:14:43'),
-('5','like','107','5','1977-03-14 14:00:49','1998-07-18 19:50:22'),
-('6','dislike','108','6','1978-03-30 01:10:44','2001-02-09 22:23:56'),
-('7','like','111','7','1978-11-11 13:45:46','1991-08-23 01:17:42'),
-('8','like','112','8','1989-11-23 03:57:15','2010-05-31 07:30:52'),
-('9','dislike','113','9','1981-08-22 01:36:48','2013-01-05 04:33:12'),
-('10','dislike','114','10','1979-10-28 08:16:44','1971-08-18 15:49:34'),
-('11','dislike','115','1','1984-06-01 21:20:04','2001-09-19 02:12:10'),
+('2','dislike','122','2','1989-09-01 21:49:47','1996-06-25 08:14:31'),
+('3','like','103','5','1994-11-05 12:58:19','1985-10-05 13:26:20'),
+('4','dislike','102','6','1972-11-15 01:08:52','1979-02-02 08:14:43'),
+('5','like','107','2','1977-03-14 14:00:49','1998-07-18 19:50:22'),
+('6','dislike','108','3','1978-03-30 01:10:44','2001-02-09 22:23:56'),
+('7','like','108','7','1978-11-11 13:45:46','1991-08-23 01:17:42'),
+('8','like','115','4','1989-11-23 03:57:15','2010-05-31 07:30:52'),
+('9','dislike','113','5','1981-08-22 01:36:48','2013-01-05 04:33:12'),
+('10','dislike','114','1','1979-10-28 08:16:44','1971-08-18 15:49:34'),
+('11','dislike','115','10','1984-06-01 21:20:04','2001-09-19 02:12:10'),
 ('12','like','117','2','2006-01-11 02:27:54','1977-12-16 00:37:52'),
 ('13','dislike','118','3','1976-08-16 04:30:38','2003-05-13 15:47:36'),
 ('14','like','121','4','2011-10-18 07:02:29','2004-10-07 04:14:27'),
@@ -722,28 +634,20 @@ CREATE TABLE `likes_dislakes_post` (
 );
 
 INSERT INTO `likes_dislakes_post` VALUES ('1','dislike','101','1','2007-01-11 20:15:28','2009-06-12 08:10:43'),
-('2','like','102','2','1976-07-19 19:48:40','1995-09-04 06:10:55'),
-('3','dislike','103','3','1988-05-23 05:51:51','1988-08-17 07:42:58'),
-('4','dislike','106','4','1983-03-29 19:52:27','1982-10-24 18:16:03'),
-('5','dislike','107','5','1975-03-10 05:48:15','1981-09-10 07:54:39'),
-('6','dislike','108','6','1999-06-04 01:02:30','2003-07-17 00:10:28'),
-('7','like','111','7','1991-12-30 07:56:49','1978-05-23 14:03:21'),
-('8','dislike','112','8','1983-08-17 15:33:32','2011-10-26 17:37:28'),
-('9','dislike','113','9','1986-09-27 18:58:45','2006-12-21 05:08:45'),
-('10','dislike','114','10','1997-06-12 06:57:32','1977-10-25 08:39:02'),
-('11','like','115','11','1998-06-20 12:14:29','1988-07-01 19:33:44'),
-('12','dislike','117','12','2020-02-21 13:09:14','1993-06-11 22:27:37'),
-('13','like','118','13','2004-06-13 21:46:27','1978-11-23 02:06:07'),
-('14','like','121','14','2005-05-11 09:03:44','1993-12-11 17:25:59'),
+('2','like','143','1','1976-07-19 19:48:40','1995-09-04 06:10:55'),
+('3','dislike','106','4','1988-05-23 05:51:51','1988-08-17 07:42:58'),
+('4','dislike','108','4','1983-03-29 19:52:27','1982-10-24 18:16:03'),
+('5','dislike','107','10','1975-03-10 05:48:15','1981-09-10 07:54:39'),
+('6','dislike','113','1','1999-06-04 01:02:30','2003-07-17 00:10:28'),
+('7','like','111','2','1991-12-30 07:56:49','1978-05-23 14:03:21'),
+('8','dislike','118','1','1983-08-17 15:33:32','2011-10-26 17:37:28'),
+('9','dislike','113','4','1986-09-27 18:58:45','2006-12-21 05:08:45'),
+('10','dislike','114','2','1997-06-12 06:57:32','1977-10-25 08:39:02'),
+('11','like','115','7','1998-06-20 12:14:29','1988-07-01 19:33:44'),
+('12','dislike','117','8','2020-02-21 13:09:14','1993-06-11 22:27:37'),
+('13','like','118','8','2004-06-13 21:46:27','1978-11-23 02:06:07'),
+('14','like','118','2','2005-05-11 09:03:44','1993-12-11 17:25:59'),
 ('15','like','122','15','2017-10-23 06:12:00','2018-02-26 06:10:51'),
-('16','dislike','123','16','1973-12-04 10:54:51','1980-10-16 16:09:56'),
-('17','like','124','17','2011-09-20 09:39:46','1995-02-23 03:25:43'),
-('18','dislike','126','18','1992-05-27 01:18:41','1988-01-15 02:15:22'),
-('19','dislike','130','19','2004-09-16 17:11:54','1977-05-20 04:59:06'),
-('20','like','132','20','1989-05-22 02:17:54','1992-06-07 19:08:43'),
-('21','dislike','133','1','1980-10-19 08:07:39','1974-04-30 09:57:16'),
-('22','like','134','2','1982-02-03 17:29:30','1988-12-26 10:44:42'),
-('23','dislike','135','3','1985-06-18 21:57:03','2013-01-21 14:07:14'),
-('24','like','137','4','1978-03-30 06:56:27','2001-11-16 15:31:59'),
-('25','like','143','5','1985-03-16 02:45:00','2006-07-18 05:56:48'); 
+('16','dislike','123','3','1973-12-04 10:54:51','1980-10-16 16:09:56'),
+('25','like','143','15','1985-03-16 02:45:00','2006-07-18 05:56:48'); 
 
