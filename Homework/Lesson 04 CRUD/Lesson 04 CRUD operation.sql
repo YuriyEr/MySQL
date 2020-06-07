@@ -2,21 +2,28 @@
 
 -- для корректной работы нуджно выполнить скрипт vk_db_creation для генерации исходных данных
 
--- PREPEARED
+-- PREPEARED by FUNCTION (PROCEDURE here)
+
+DROP PROCEDURE IF EXISTS PrepearedSET;
+
+DELIMITER $$
+CREATE PROCEDURE PrepearedSET(
+    body CHAR(25), 
+    num INT
+)
+BEGIN   
+    DECLARE counter INT DEFAULT 1;
+    WHILE counter <= num DO
+        INSERT INTO vk.poligon (`body`) VALUES (CONCAT_WS(' ', body, counter));
+        SET counter = counter + 1;
+    END WHILE;
+
+END$$
+DELIMITER ;
+
+-- PREPEARED TABLE
 
 USE VK;
-
-DROP TABLE IF EXISTS analystics_activity;
-CREATE TABLE analystics_activity (
-id SERIAL PRIMARY KEY AUTO_INCREMENT,
-user_id BIGINT UNSIGNED NOT NULL,
-total_photo BIGINT UNSIGNED,
-total_posts BIGINT UNSIGNED,
-total_media BIGINT UNSIGNED,
-total_like BIGINT UNSIGNED,
-analystics_created DATETIME DEFAULT NOW() ON UPDATE NOW(),
-FOREIGN KEY (user_id) REFERENCES vk.users (id)
-);
 
 DROP TABLE IF EXISTS poligon;
 CREATE TABLE poligon (
@@ -43,6 +50,11 @@ on duplicate key update created_at = now()
 -- пропуск при дублирование c IGNORE
 INSERT IGNORE INTO vk.poligon (`id`, `body`) VALUES (1, "Some text 1") 
 ;
+
+-- вставка из функции
+
+CALL PrepearedSET("Some text from function", 20);
+
 
 -- SELECT --
 -- https://dev.mysql.com/doc/refman/8.0/en/select.html
