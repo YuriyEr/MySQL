@@ -1,8 +1,8 @@
 -- Домашнее задание, урок 06
 
 /* Работаем с БД vk и тестовыми данными, которые вы сгенерировали ранее: */
--- Принимаем за 20 в качестве ID пользователя
-SET @myID = 20;
+-- Принимаем за 19 в качестве ID пользователя
+SET @myID = 1;
 -- и лимит возраста
 SET @myAgeLimit = 15;
 
@@ -11,8 +11,11 @@ SET @myAgeLimit = 15;
 	UPDATE messages SET to_user_id = ROUND((RAND()*(99-0+1)+0), 0); 
 	SELECT to_user_id FROM messages m2 ;
 	SELECT * FROM messages WHERE to_user_id = @myID;
-
-	SELECT COUNT(*), from_user_id FROM messages WHERE to_user_id = @myID
+	
+	SELECT COUNT(*), from_user_id FROM messages WHERE to_user_id = @myID AND  from_user_id in (
+	SELECT target_user_id AS user_id FROM friend_requests WHERE initiator_user_id = @myID AND status = 'approved' 
+	UNION 
+	SELECT initiator_user_id AS user_id FROM friend_requests WHERE target_user_id = @myID AND status = 'approved')
 	GROUP BY from_user_id ORDER BY from_user_id LIMIT 1
 	;
 
