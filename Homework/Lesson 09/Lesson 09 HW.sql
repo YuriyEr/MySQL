@@ -33,38 +33,36 @@ SELECT * FROM representation_one;
  * с 12:00 до 18:00 функция должна возвращать фразу "Добрый день", 
  * с 18:00 до 00:00 — "Добрый вечер", с 00:00 до 6:00 — "Доброй ночи". */ 
 
-SET GLOBAL time_zone = '-3:00';
-SELECT HOUR(NOW());
-USE SHOP;
-
 DROP FUNCTION IF EXISTS hello;
 
-DELIMITER //
+DELIMITER $$
+
 CREATE FUNCTION hello ()
-RETURNS VARCHAR(255) ​​DETERMINISTIC
+RETURNS VARCHAR(255) READS SQL DATA
+
 BEGIN
+	
 	DECLARE timeNow INT;
 	DECLARE results VARCHAR(255);
-	SET timeNow = 6;
-	CASE timeNow
-	WHEN 6 to 11 THEN 
-	SET results = 'Доброе утро';
-	WHEN 12 to 17 THEN 
-	SET results = 'Добрый день';
-	WHEN 18 to 23 THEN 
-	SET results = 'Доброй ночи';
-	ELSE 
-	SET results = 'Иначе';
-	END CASE;
-	RETURN results
-END //
 
-DELIMITER ;
+	SET timeNow = HOUR(NOW());
+	IF timeNow BETWEEN  6 AND 11 THEN 
+	SET results = 'Доброе утро';
+	ELSEIF timeNow BETWEEN  12 AND 17 THEN 
+	SET results = 'Добрый день';
+	ELSEIF timeNow BETWEEN  18 AND 23 THEN
+	SET results = 'Доброй ночи';
+	ELSEIF (timeNow >  23 | timeNow < 6 ) THEN
+	SET results = 'Пора спать';
+	END IF;
+	RETURN (results);
+	
+END 
+$$
+
+DELIMITER  ;
 
 SELECT hello();
-
-
-
 
 /* 2. В таблице products есть два текстовых поля: name с названием товара и description с его описанием. 
  * Допустимо присутствие обоих полей или одно из них. 
@@ -72,4 +70,73 @@ SELECT hello();
  * Используя триггеры, добейтесь того, чтобы одно из этих полей или оба поля были заполнены. 
  * При попытке присвоить полям NULL-значение необходимо отменить операцию.
 */
+
+DROP TRIGGER IF EXISTS notNulltrigger;
+
+-- Вариант А - рабочий
+/*
+DELIMITER  $$ 
+CREATE TRIGGER notNulltrigger BEFORE UPDATE ON shop.products 
+FOR EACH ROW 
+BEGIN 	
+	IF (NEW.name | NEW.desription IS NULL)
+	THEN 
+	SIGNAL SQLSTATE '45000' 
+	SET MESSAGE_TEXT = "Ошибка вставки значения";
+	END IF ;
+END $$
+
+DELIMITER  ;
+*/
+
+-- Вариант Б - рабочий
+
+DELIMITER  $$ 
+CREATE TRIGGER notNulltrigger BEFORE UPDATE ON shop.products 
+FOR EACH ROW 
+BEGIN
+	CASE
+	WHEN (NEW.name | NEW.desription IS NULL) THEN 
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Ошибка вставки значения - все значения NULL";
+	END CASE ;
+END $$
+
+DELIMITER  ;
+
+/* (по желанию) Напишите хранимую функцию для вычисления произвольного числа Фибоначчи. 
+Числами Фибоначчи называется последовательность в которой число равно сумме двух предыдущих чисел. 
+Вызов функции FIBONACCI(10) должен возвращать число 55.
+*/ 
+
+-- поскольку число Фибоначи бесконечно, требуемое выражение FIBONACCI(10) не корректно, 
+-- т.к. должно быть два параметра: исходное число и число шагов
+
+DROP FUNCTION IF EXISTS fib;
+DELIMITER  $$ 
+CREATE FUNCTION fib(num INT, step_num INT) 
+RETURNS INT DETERMINISTIC
+BEGIN
+	DECLARE limit_num INT DEFAULT 1000;
+	DECLARE step INT default 0;
+	DECLARE old_num INT;
+	DECLARE new_num INT;
+	DECLARE between_num INT DEFAULT 0;
+	SET old_num = num;
+	SET new_num = num;
+	
+	REPEAT
+		SET between_num = old_num;
+		SET new_num = between_num + new_num ;
+		SET old_num = new_num - between_num ;
+		SET step = step + 1;
+	UNTIL  ( step >= step_num )
+	END REPEAT ;
+	RETURN new_num;
+	
+END 
+$$
+
+-- проверка
+SELECT fib(10, 3); -- результат 50 соблюден (10+10) -> (10+20) -> (20+30) = 50 решение верно в 3 шага
+
 
