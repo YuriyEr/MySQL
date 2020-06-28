@@ -1,0 +1,30 @@
+Задание 02
+При помощи базы данных Redis решите задачу поиска имени пользователя по электронному адресу и наоборот, поиск электронного адреса пользователя по его имени.
+
+
+// используеме хэши
+// проверка состояния сервера
+MacBook-Pro-Urij:~ y.ershov$ redis-cli ping
+PONG
+
+// вход в консольный клиент
+MacBook-Pro-Urij:~ y.ershov$ redis-cli
+PONG
+
+// переключение базы
+MacBook-Pro-Urij:~ y.ershov$ REDIS-cli
+127.0.0.1:6379> SELECT 1
+OK
+
+// вставка значений email
+127.0.0.1:6379> HMSET email matrin "matrin@bk.hh" frank "frank@bk.hh"  pasha "pasha@yo.ru" igor "igor@yo.ri"
+OK
+
+// вставка значений userName
+127.0.0.1:6379> HMSET userName "matrin@bk.hh" "matrin" "frank@bk.hh" "frank"  "pasha@yo.ru" "pasha" "igor@yo.ri" "igor"
+OK
+
+// Проверка
+127.0.0.1:6379[1]> HGET email pasha
+"pasha@yo.ru"
+
