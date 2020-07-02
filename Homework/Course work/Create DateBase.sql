@@ -33,6 +33,8 @@ CREATE TABLE tours (
   `price` BIGINT UNSIGNED NOT NULL,
   KEY `id_idx` (`id`),
   KEY `name_idx` (`name`)
+  FOREIGN KEY (`planet_from_id`) REFERENCES planets (`id`),
+  FOREIGN KEY (`planet_to_id`) REFERENCES planets (`id`),
 );
 
 CREATE TABLE starships (
