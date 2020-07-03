@@ -209,6 +209,11 @@ CREATE TABLE payments (
   FOREIGN KEY (`tour_id`) REFERENCES tours (`id`)
 );
 
+INSERT INTO payments VALUES
+(1, 120, 1, '2020-07-01 11:00:00' , 1),
+(2, 102, 2, '2020-06-10 23:00:00' , 1)
+;
+
 
 CREATE TABLE orders (
   `id` SERIAL PRIMARY KEY,
@@ -221,7 +226,12 @@ CREATE TABLE orders (
   FOREIGN KEY (`user_id`) REFERENCES users (`id`)
 ); 
 
-INSERT INTO orders
+INSERT INTO orders VALUES
+(1, 1, 102, NULL, '2020-07-01 23:00:59'),
+(2, 1, 120, NULL, '2020-06-10 22:00:00'),
+(3, 5, 122, NULL, NOW()),
+(4, 1, 130, NULL, '2020-05-11 10:00:00')
+;
 
 CREATE TABLE dangers (
   `id` SERIAL PRIMARY KEY,
